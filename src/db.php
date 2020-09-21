@@ -124,6 +124,33 @@ $db_edit = function ($id, $dados) use ($conn) {
     return true;
 };
 
+/*  
+    =========================================================
+    Função Anonima - Puxa todos os dados da Database Clientes
+    =========================================================
+*/
+
+$db_all = function () use ($conn) {
+    // Faz a conexão com o Banco de Dados
+    $conn = require 'connection.php';
+
+    // Realizando uma query no banco de dados
+    $sql = pg_query($conn, "select * from clientes"); // Mostra os dados da tabela cliente
+
+    // Puxando todas linhas da tabela inteira
+    $result = pg_fetch_all($sql);
+
+    if (!$result) {
+        // não conseguiu puxar todos os dados
+        pg_close($conn);
+        return false;
+        exit;
+    }
+
+    return $result;
+};
+
+
 /*
     ===================
     Funções Útilitárias  

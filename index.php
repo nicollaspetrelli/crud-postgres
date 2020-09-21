@@ -2,20 +2,20 @@
 
 require_once 'sessions.php';
 require_once 'login/verifica_login.php';
+require_once __DIR__.'/src/db.php';
 
-// Faz a conexão com o Banco de Dados
-$conn = require 'connection.php';
+if (!$db_all()) {
 
-// Realizando uma query no banco de dados
-$sql = pg_query($conn, "select * from clientes"); // Mostra os dados da tabela cliente
+    if (empty($db_all())) {
+        header('location: cadastro.php?db=null');
+        exit;
+    }
 
-// Puxando todas linhas da tabela inteira
-$users = pg_fetch_all($sql);
-
-if (empty($users)) {
-    header('location: cadastro.php?db=null');
-    exit();
+    throw new Exception("Error Processing Select all Rows Database", 1);
+    exit;
 }
+
+$users = $db_all();
 
 // Alertas
 $alert = false;
