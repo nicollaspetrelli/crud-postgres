@@ -1,0 +1,11 @@
+.card-custom{
+    min-width: 20rem;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.form-login {
+    min-width: 20rem;
+    max-width: 35rem;
+    margin: 0 auto;
+}
