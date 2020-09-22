@@ -100,15 +100,7 @@ $db_delete = function ($id) use ($conn) {
 
 $db_edit = function ($id, $dados) use ($conn) {
 
-    $nome = $dados['nome'] ;
-    $sobrenome = $dados['sobrenome'] ;
-    $email = $dados['email'] ;
-    $endereco = $dados['endereco'] ;
-    $bairro = $dados['bairro'] ;
-    $numero = $dados['numero'] ;
-    $cidade = $dados['cidade'] ;
-    $estado = $dados['estado'] ;
-    $cep = $dados['cep'] ;
+    extract($dados);
 
     // Faz a conexão com o Banco de Dados
     $conn = require 'connection.php'; 
